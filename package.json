@@ -1,94 +1,94 @@
 {
-  "repository": "ng-select/ng-select",
-  "engines": {
-    "node": ">= 18.12.0",
-    "npm": ">= 8.19.2"
-  },
-  "scripts": {
-    "build": "ng build ng-select && ng build ng-option-highlight && yarn build:themes && yarn copy-sass",
-    "build:demo": "ng build demo --configuration production --base-href=/ng-select && yarn copy-examples",
-    "build:themes": "node-sass --output-style compressed src/ng-select/themes/ -o dist/ng-select/themes",
-    "copy-sass": "mkdir -p dist/ng-select/scss && cp src/ng-select/**/*.scss dist/ng-select/scss",
-    "copy-examples": "cp -r src/demo/app/examples dist/demo",
-    "start": "ng serve",
-    "test:watch": "ng test ng-select --watch",
-    "test": "ng test ng-select --code-coverage && ng test ng-option-highlight --code-coverage",
-    "test:ci": "ng test --watch=false --browsers=ChromeHeadless --code-coverage",
-    "coveralls": "cat ./coverage/ng-select/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
-    "lint": "ng lint ng-select && ng lint ng-option-highlight",
-    "postpublish": "cp dist/ng-select/package.json src/ng-select && cp dist/ng-option-highlight/package.json src/ng-option-highlight",
-    "release": "semantic-release"
-  },
-  "release": {
-    "branch": "master",
-    "plugins": [
-      "@semantic-release/commit-analyzer",
-      "@semantic-release/changelog",
-      "@semantic-release/github",
-      [
-        "@semantic-release/npm",
-        {
-          "pkgRoot": "dist/ng-select"
-        }
-      ],
-      "@semantic-release/release-notes-generator"
-    ]
-  },
-  "dependencies": {
-    "@angular/animations": "^18.0.0",
-    "@angular/common": "^18.0.0",
-    "@angular/compiler": "^18.0.0",
-    "@angular/core": "^18.0.0",
-    "@angular/forms": "^18.0.0",
-    "@angular/localize": "^18.0.0",
-    "@angular/platform-browser": "^18.0.0",
-    "@angular/platform-browser-dynamic": "^18.0.0",
-    "@angular/router": "^18.0.0",
-    "@angular/ssr": "^18.0.1",
-    "@ng-bootstrap/ng-bootstrap": "^17.0.0",
-    "@popperjs/core": "^2.11.8",
-    "bootstrap": "^5.3.3",
-    "rxjs": "^7.8.1",
-    "tslib": "^2.6.2",
-    "zone.js": "~0.14.2"
-  },
-  "devDependencies": {
-    "@angular-devkit/build-angular": "^18.0.1",
-    "@angular-eslint/builder": "18.0.1",
-    "@angular-eslint/eslint-plugin": "18.0.1",
-    "@angular-eslint/eslint-plugin-template": "18.0.1",
-    "@angular-eslint/schematics": "18.0.1",
-    "@angular-eslint/template-parser": "18.0.1",
-    "@angular/cli": "^18.0.1",
-    "@angular/compiler-cli": "^18.0.0",
-    "@angular/language-service": "^18.0.0",
-    "@semantic-release/changelog": "^6.0.3",
-    "@stackblitz/sdk": "^1.10.0",
-    "@types/jasmine": "~5.1.4",
-    "@types/jasminewd2": "^2.0.13",
-    "@types/node": "^20.14.9",
-    "@typescript-eslint/eslint-plugin": "7.14.1",
-    "@typescript-eslint/parser": "7.14.1",
-    "coveralls": "^3.1.1",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-jsdoc": "48.5.0",
-    "eslint-plugin-prefer-arrow": "^1.2.3",
-    "gh-pages-travis": "^1.0.4",
-    "jasmine-core": "~5.1.2",
-    "jasmine-spec-reporter": "~7.0.0",
-    "karma": "~6.4.3",
-    "karma-chrome-launcher": "~3.2.0",
-    "karma-coverage": "^2.2.1",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "^2.1.0",
-    "ng-packagr": "^18.0.0",
-    "node-sass": "^9.0.0",
-    "semantic-release": "^22.0.12",
-    "standard-version": "^9.5.0",
-    "ts-node": "~10.9.2",
-    "prettier": "^3.2.5",
-    "typescript": "~5.4.5"
-  }
+	"repository": "ng-select/ng-select",
+	"engines": {
+		"node": ">= 18.12.0",
+		"npm": ">= 8.19.2"
+	},
+	"scripts": {
+		"build": "ng build ng-select && ng build ng-option-highlight && yarn build:themes && yarn copy-sass",
+		"build:demo": "ng build demo --configuration production --base-href=/ng-select && yarn copy-examples",
+		"build:themes": "sass --output-style compressed src/ng-select/themes/ -o dist/ng-select/themes",
+		"copy-sass": "mkdir -p dist/ng-select/scss && cp src/ng-select/**/*.scss dist/ng-select/scss",
+		"copy-examples": "cp -r src/demo/app/examples dist/demo",
+		"start": "ng serve",
+		"test:watch": "ng test ng-select --watch",
+		"test": "ng test ng-select --code-coverage && ng test ng-option-highlight --code-coverage",
+		"test:ci": "ng test --watch=false --browsers=ChromeHeadless --code-coverage",
+		"coveralls": "cat ./coverage/ng-select/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+		"lint": "ng lint ng-select && ng lint ng-option-highlight",
+		"postpublish": "cp dist/ng-select/package.json src/ng-select && cp dist/ng-option-highlight/package.json src/ng-option-highlight",
+		"release": "semantic-release"
+	},
+	"release": {
+		"branch": "master",
+		"plugins": [
+			"@semantic-release/commit-analyzer",
+			"@semantic-release/changelog",
+			"@semantic-release/github",
+			[
+				"@semantic-release/npm",
+				{
+					"pkgRoot": "dist/ng-select"
+				}
+			],
+			"@semantic-release/release-notes-generator"
+		]
+	},
+	"dependencies": {
+		"@angular/animations": "^18.0.0",
+		"@angular/common": "^18.0.0",
+		"@angular/compiler": "^18.0.0",
+		"@angular/core": "^18.0.0",
+		"@angular/forms": "^18.0.0",
+		"@angular/localize": "^18.0.0",
+		"@angular/platform-browser": "^18.0.0",
+		"@angular/platform-browser-dynamic": "^18.0.0",
+		"@angular/router": "^18.0.0",
+		"@angular/ssr": "^18.0.1",
+		"@ng-bootstrap/ng-bootstrap": "^17.0.0",
+		"@popperjs/core": "^2.11.8",
+		"bootstrap": "^5.3.3",
+		"rxjs": "^7.8.1",
+		"sass": "^1.80.6",
+		"tslib": "^2.6.2",
+		"zone.js": "~0.14.2"
+	},
+	"devDependencies": {
+		"@angular-devkit/build-angular": "^18.0.1",
+		"@angular-eslint/builder": "18.0.1",
+		"@angular-eslint/eslint-plugin": "18.0.1",
+		"@angular-eslint/eslint-plugin-template": "18.0.1",
+		"@angular-eslint/schematics": "18.0.1",
+		"@angular-eslint/template-parser": "18.0.1",
+		"@angular/cli": "^18.0.1",
+		"@angular/compiler-cli": "^18.0.0",
+		"@angular/language-service": "^18.0.0",
+		"@semantic-release/changelog": "^6.0.3",
+		"@stackblitz/sdk": "^1.10.0",
+		"@types/jasmine": "~5.1.4",
+		"@types/jasminewd2": "^2.0.13",
+		"@types/node": "^20.14.9",
+		"@typescript-eslint/eslint-plugin": "7.14.1",
+		"@typescript-eslint/parser": "7.14.1",
+		"coveralls": "^3.1.1",
+		"eslint": "^8.57.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-import": "^2.29.1",
+		"eslint-plugin-jsdoc": "48.5.0",
+		"eslint-plugin-prefer-arrow": "^1.2.3",
+		"gh-pages-travis": "^1.0.4",
+		"jasmine-core": "~5.1.2",
+		"jasmine-spec-reporter": "~7.0.0",
+		"karma": "~6.4.3",
+		"karma-chrome-launcher": "~3.2.0",
+		"karma-coverage": "^2.2.1",
+		"karma-jasmine": "~5.1.0",
+		"karma-jasmine-html-reporter": "^2.1.0",
+		"ng-packagr": "^18.0.0",
+		"prettier": "^3.2.5",
+		"semantic-release": "^22.0.12",
+		"standard-version": "^9.5.0",
+		"ts-node": "~10.9.2",
+		"typescript": "~5.4.5"
+	}
 }
