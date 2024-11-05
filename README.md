@@ -1,28 +1,46 @@
  [![npm version](https://badge.fury.io/js/%40ng-select%2Fng-select.svg)](https://badge.fury.io/js/%40ng-select%2Fng-select)
-[![Build Status][travis-badge]][travis-badge-url]
 [![Coverage Status][coveralls-image]][coveralls-url]
-[![gzip bundle size](http://img.badgesize.io/https://unpkg.com/@ng-select/ng-select@latest/bundles/ng-select.umd.min.js?compression=gzip&style=flat-square)][ng-select-url]
+[![gzip bundle size](http://img.badgesize.io/https://unpkg.com/@ng-select/ng-select@latest/bundles/ng-select-ng-select.umd.min.js?compression=gzip&style=flat-square)][ng-select-url]
+[![ng-select channel on discord](https://img.shields.io/discord/873021904708059177.svg?style=flat-square)](https://discord.gg/ETyJTvKK)
 
-[travis-badge]: https://travis-ci.org/ng-select/ng-select.svg?branch=master
-[travis-badge-url]: https://travis-ci.org/ng-select/ng-select
 [coveralls-image]: https://coveralls.io/repos/github/ng-select/ng-select/badge.svg?branch=master
 [coveralls-url]: https://coveralls.io/github/ng-select/ng-select?branch=master
 [ng-select-url]: https://unpkg.com/@ng-select/ng-select@latest
 
 # Angular ng-select - Lightweight all in one UI Select, Multiselect and Autocomplete
-See [Demos](https://ng-select.github.io/ng-select) or try in [Stackblitz](https://stackblitz.com/edit/ng-select?file=app%2Fapp.component.ts)
+See [Demo](https://ng-select.github.io/ng-select) page.
 
 ---
 
 ## Versions
 
-| Angular| ng-select|
-| ------|:------:| 
-| v6.x  | v2.x |
-| v5.x  | v1.x |
+| Angular          | ng-select |
+|------------------|:---------:|
+| >=18.0.0 <19.0.0 |   v13.x   |
+| >=17.0.0 <18.0.0 |   v12.x   |
+| >=16.0.0 <17.0.0 |   v11.x   |
+| >=15.0.0 <16.0.0 |   v10.x   |
+| >=14.0.0 <15.0.0 |   v9.x    |
+| >=13.0.0 <14.0.0 |   v8.x    |
+| >=12.0.0 <13.0.0 |   v7.x    |
+| >=11.0.0 <12.0.0 |   v6.x    |
+| >=10.0.0 <11.0.0 |   v5.x    |
+| >=9.0.0 <10.0.0  |   v4.x    |
+| >=8.0.0 <9.0.0   |   v3.x    |
+| >=6.0.0 <8.0.0   |   v2.x    |
+| v5.x.x           |   v1.x    |
 
 ---
-
+## Browser Support
+`ng-select` supports all browsers supported by Angular. For current list, see https://angular.io/guide/browser-support#browser-support. This includes the following specific versions:
+```angular2html
+Chrome	2 most recent versions
+Firefox	latest and extended support release (ESR)
+Edge	2 most recent major versions
+Safari	2 most recent major versions
+iOS	2 most recent major versions
+Android	2 most recent major versions
+```
 Table of contents
 =================
 
@@ -67,8 +85,29 @@ npm install --save @ng-select/ng-select
 ```shell
 yarn add @ng-select/ng-select
 ```
-### Step 2: Import the NgSelectModule and angular FormsModule module:
-```js
+### Step 2: 
+
+#### Standalone: Import NgSelectComponent and other necessary directives directly:
+```typescript
+import { NgLabelTemplateDirective, NgOptionTemplateDirective, NgSelectComponent } from '@ng-select/ng-select';
+import { FormsModule } from '@angular/forms';
+
+@Component({
+  selector: 'example',
+  standalone: true,
+  template: './example.component.html',
+  styleUrl: './example.component.scss',
+  imports: [
+    NgLabelTemplateDirective,
+    NgOptionTemplateDirective,
+    NgSelectComponent,
+  ],
+})
+export class ExampleComponent {}
+```
+
+#### NgModule: Import the NgSelectModule and angular FormsModule module:
+```typescript
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
 
@@ -99,8 +138,51 @@ typically in your root component, and customize the values of its properties in 
 ```js
   constructor(private config: NgSelectConfig) {
       this.config.notFoundText = 'Custom not found';
+      this.config.appendTo = 'body';
+      // set the bindValue to global config when you use the same 
+      // bindValue in most of the place. 
+      // You can also override bindValue for the specified template 
+      // by defining `bindValue` as property
+      // Eg : <ng-select bindValue="some-new-value"></ng-select>
+      this.config.bindValue = 'value';
   }
 ```
+
+### Usage
+Define options in your consuming component:
+```js
+@Component({...})
+export class ExampleComponent {
+
+    selectedCar: number;
+
+    cars = [
+        { id: 1, name: 'Volvo' },
+        { id: 2, name: 'Saab' },
+        { id: 3, name: 'Opel' },
+        { id: 4, name: 'Audi' },
+    ];
+}
+```
+In template use `ng-select` component with your options
+
+```html
+<!--Using ng-option and for loop-->
+<ng-select [(ngModel)]="selectedCar">
+    @for (car of cars; track car.id) {
+        <ng-option [value]="car.id">{{car.name}}</ng-option>
+    }
+</ng-select>
+
+<!--Using items input-->
+<ng-select [items]="cars" 
+           bindLabel="name" 
+           bindValue="id" 
+           [(ngModel)]="selectedCar">
+</ng-select>
+```
+For more detailed examples see [Demo](https://ng-select.github.io/ng-select#/data-sources) page
+
 ### SystemJS
 If you are using SystemJS, you should also adjust your configuration to point to the UMD bundle.
 
@@ -117,7 +199,9 @@ map: {
 | ------------- | ------------- | ------------- | ------------- | ------------- |
 | [addTag] | `boolean \| ((term: string) => any \| Promise<any>)`  | `false` | no | Allows to create custom options. |
 | addTagText | `string` | `Add item` | no | Set custom text when using tagging |
+| appearance | `string` | `underline` | no | Allows to select dropdown appearance. Set to `outline` to add border instead of underline (applies only to Material theme) |
 | appendTo | `string` |  null | no | Append dropdown to body or any other element using css selector. For correct positioning `body` should have `position:relative` |
+| bufferAmount | `string` |  null | no | Append dropdown to body or any other element using css selector. For correct positioning `body` should have `position:relative` |
 | bindValue  | `string` | `-` | no | Object property to use for selected model. By default binds to whole object. |
 | bindLabel  | `string` | `label` | no | Object property to use for label. Default `label`  |
 | [closeOnSelect] | `boolean` |  true | no | Whether to close the menu when a value is selected |
@@ -126,9 +210,8 @@ map: {
 | [clearOnBackspace] | `boolean` | `true` | no | Clear selected values one by one when clicking backspace. Default `true`|
 | [compareWith] | `(a: any, b: any) => boolean` | `(a, b) => a === b` | no | A function to compare the option values with the selected values. The first argument is a value from an option. The second is a value from the selection(model). A boolean should be returned. |
 | dropdownPosition | `bottom` \| `top` \| `auto` |  `auto` | no | Set the dropdown position on open |
-| [excludeGroupsFromDefaultSelection] | `boolean` |  false | no | Exclude group from default selection when `selectableGroup` is `true`. Default `false`. |
 | [groupBy] | `string` \| `Function` | null | no | Allow to group items by key or function expression |
-| [groupValue] |  `(groupKey: string, cildren: any[]) => Object` | - | no | Function expression to provide group value |
+| [groupValue] |  `(groupKey: string, children: any[]) => Object` | - | no | Function expression to provide group value |
 | [selectableGroup] | `boolean` | false | no | Allow to select group when groupBy is used |
 | [selectableGroupAsModel] | `boolean` | true | no | Indicates whether to select all children or group itself  |
 | [items] | `Array<any>` | `[]` | yes | Items array |
@@ -136,23 +219,30 @@ map: {
 | loadingText | `string` | `Loading...` | no | Set custom text when for loading items |
 | labelForId | `string` | `-` | no | Id to associate control with label. |
 | [markFirst] | `boolean` | `true` | no | Marks first item as focused when opening/filtering. |
-| [isOpen] | `boolean` | `-` | no | Allows manual control of dropdown opening and closing. `True` - won't close. `False` - won't open. |
+| [isOpen] | `boolean` | `-` | no | Allows manual control of dropdown opening and closing. `true` - won't close. `false` - won't open. |
 | maxSelectedItems | `number` | none | no | When multiple = true, allows to set a limit number of selection. |
 | [hideSelected] | `boolean` | `false` | no | Allows to hide selected items. |
 | [multiple] | `boolean` | `false` | no | Allows to select multiple items. |
 | notFoundText | `string` | `No items found` | no | Set custom text when filter returns empty result |
 | placeholder | `string` | `-` | no | Placeholder text. |
 | [searchable] | `boolean` | `true` | no | Allow to search for value. Default `true`|
+| [readonly] | `boolean` | `false` | no | Set ng-select as readonly. Mostly used with reactive forms. |
 | [searchFn] | `(term: string, item: any) => boolean` | `null` | no | Allow to filter by custom search function |
+| [searchWhileComposing] | `boolean` | `true` | no | Whether items should be filtered while composition started |
 | [trackByFn] | `(item: any) => any` | `null` | no | Provide custom trackBy function |
 | [clearSearchOnAdd] | `boolean` | `true` | no | Clears search input when item is selected. Default `true`. Default `false` when **closeOnSelect** is `false` |
+| [deselectOnClick] | `boolean` | `false` | no | Deselects a selected item when it is clicked in the dropdown. Default `false`. Default `true` when **multiple** is `true` |
+| [editableSearchTerm] | `boolean` |  `false` | no | Allow to edit search query if option selected. Default `false`. Works only if multiple is `false`. |
 | [selectOnTab] | `boolean` | `false` | no | Select marked dropdown item using tab. Default `false`|
 | [openOnEnter] | `boolean` | `true` | no | Open dropdown using enter. Default `true`|
 | [typeahead] | `Subject` |  `-` | no | Custom autocomplete or advanced filter. |
+| [minTermLength] | `number` |  `0` | no | Minimum term length to start a search. Should be used with `typeahead` |
 | typeToSearchText | `string` | `Type to search` | no | Set custom text when using Typeahead |
 | [virtualScroll] | `boolean` |  false | no | Enable virtual scroll for better performance when rendering a lot of data |
-| autoCorrect | `string` | `off` | no | Allows control of the `autocorrect` attribute. |
-| autoCapitalize | `string` | `off` | no | Allows control of the `autocapitalize` attribute. |
+| [inputAttrs] | `{ [key: string]: string }` |  `-` | no | Pass custom attributes to underlying `input` element |
+| [tabIndex] | `number` |  `-` | no | Set tabindex on ng-select |
+| [preventToggleOnRightClick] | `boolean` |  `false` | no | Prevent opening of ng-select on right mouse click |
+| [keyDownFn] | `($event: KeyboardEvent) => bool` |  `true` | no | Provide custom keyDown function. Executed before default handler. Return false to suppress execution of default key down handlers  |
 
 ### Outputs
 
@@ -177,13 +267,33 @@ map: {
 | open  | Opens the select dropdown panel |
 | close  | Closes the select dropdown panel |
 | focus  | Focuses the select element |
+| blur  | Blurs the select element |
 
 ### Other
  Name  | Type | Description |
 | ------------- | ------------- | ------------- |
-| [ngOptionHighlight] | directive | Highlights search term in option. Accepts search term. Should be used on option element. |
+| [ngOptionHighlight] | directive | Highlights search term in option. Accepts search term. Should be used on option element. [README](https://github.com/ng-select/ng-select/blob/master/src/ng-option-highlight/README.md) |
 | NgSelectConfig | configuration | Configuration provider for the NgSelect component. You can inject this service and provide application wide configuration. |
 | SELECTION_MODEL_FACTORY | service | DI token for SelectionModel implementation. You can provide custom implementation changing selection behaviour. |
+
+## Custom selection logic
+Ng-select allows to provide custom selection implementation using `SELECTION_MODEL_FACTORY`. To override [default](https://github.com/ng-select/ng-select/blob/master/src/ng-select/lib/selection-model.ts) logic provide your factory method in your angular module.
+
+```javascript
+// app.module.ts
+providers: [
+    { provide: SELECTION_MODEL_FACTORY, useValue: <SelectionModelFactory>CustomSelectionFactory }
+]
+
+// selection-model.ts
+export function CustomSelectionFactory() {
+    return new CustomSelectionModel();
+}
+
+export class CustomSelectionModel implements SelectionModel {
+    ...
+}
+```
 
 ## Change Detection
 Ng-select component implements `OnPush` change detection which means the dirty checking checks for immutable 
@@ -222,7 +332,7 @@ If you are not happy with default styles you can easily override them with incre
 }
 ```
 
-If you are using `ViewEncapsulation`, your could use special `::ng-deep` selector which will prevent scoping for nested selectors altough this is more of a workaround and we recommend using solution described above.
+If you are using `ViewEncapsulation`, you could use special `::ng-deep` selector which will prevent scoping for nested selectors altough this is more of a workaround and we recommend using solution described above.
 
 ```css
 .ng-select.custom ::ng-deep .ng-select-container  {            
@@ -271,3 +381,4 @@ To release to npm just run `./release.sh`, of course if you have permissions ;)
 
 ## Inspiration
 This component is inspired by [React select](https://github.com/JedWatson/react-select) and [Virtual scroll](https://github.com/rintoj/angular2-virtual-scroll). Check theirs amazing work and components :)
+
