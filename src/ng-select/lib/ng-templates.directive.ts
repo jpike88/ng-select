@@ -1,125 +1,135 @@
-import { Directive, ElementRef, Input, OnChanges, SimpleChanges, TemplateRef } from '@angular/core';
+import { Directive, effect, ElementRef, inject, input, TemplateRef } from '@angular/core';
 import { escapeHTML } from './value-utils';
 
 @Directive({
-    selector: '[ngItemLabel]',
-    standalone: true,
+	selector: '[ngItemLabel]',
+	standalone: true,
 })
-export class NgItemLabelDirective implements OnChanges {
-	@Input() ngItemLabel: string;
-	@Input() escape = true;
+export class NgItemLabelDirective {
+	private element = inject<ElementRef<HTMLElement>>(ElementRef);
 
-	constructor(private element: ElementRef<HTMLElement>) {}
+	ngItemLabel = input<string>();
+	escape = input(true);
 
-	ngOnChanges(changes: SimpleChanges) {
-		this.element.nativeElement.innerHTML = this.escape ? escapeHTML(this.ngItemLabel) : this.ngItemLabel;
+	constructor() {
+		effect(() => {
+			this.element.nativeElement.innerHTML = this.escape()
+				? escapeHTML(this.ngItemLabel())
+				: this.ngItemLabel();
+		})
 	}
 }
 
 @Directive({
-    // eslint-disable-next-line @angular-eslint/directive-selector
-    selector: '[ng-option-tmp]',
-    standalone: true,
+	// eslint-disable-next-line @angular-eslint/directive-selector
+	selector: '[ng-option-tmp]',
+	standalone: true,
 })
 export class NgOptionTemplateDirective {
-	constructor(public template: TemplateRef<any>) {}
+	public readonly template = inject(TemplateRef<any>);
 }
 
 @Directive({
-    // eslint-disable-next-line @angular-eslint/directive-selector
-    selector: '[ng-optgroup-tmp]',
-    standalone: true,
+	// eslint-disable-next-line @angular-eslint/directive-selector
+	selector: '[ng-optgroup-tmp]',
+	standalone: true,
 })
 export class NgOptgroupTemplateDirective {
-	constructor(public template: TemplateRef<any>) {}
+	public readonly template = inject(TemplateRef<any>);
 }
 
 @Directive({
-    // eslint-disable-next-line @angular-eslint/directive-selector
-    selector: '[ng-label-tmp]',
-    standalone: true,
+	// eslint-disable-next-line @angular-eslint/directive-selector
+	selector: '[ng-label-tmp]',
+	standalone: true,
 })
 export class NgLabelTemplateDirective {
-	constructor(public template: TemplateRef<any>) {}
+	public readonly template = inject(TemplateRef<any>);
 }
 
 @Directive({
-    // eslint-disable-next-line @angular-eslint/directive-selector
-    selector: '[ng-multi-label-tmp]',
-    standalone: true,
+	// eslint-disable-next-line @angular-eslint/directive-selector
+	selector: '[ng-multi-label-tmp]',
+	standalone: true,
 })
 export class NgMultiLabelTemplateDirective {
-	constructor(public template: TemplateRef<any>) {}
+	public readonly template = inject(TemplateRef<any>);
 }
 
 @Directive({
-    // eslint-disable-next-line @angular-eslint/directive-selector
-    selector: '[ng-header-tmp]',
-    standalone: true,
+	// eslint-disable-next-line @angular-eslint/directive-selector
+	selector: '[ng-header-tmp]',
+	standalone: true,
 })
 export class NgHeaderTemplateDirective {
-	constructor(public template: TemplateRef<any>) {}
+	public readonly template = inject(TemplateRef<any>);
 }
 
 @Directive({
-    // eslint-disable-next-line @angular-eslint/directive-selector
-    selector: '[ng-footer-tmp]',
-    standalone: true,
+	// eslint-disable-next-line @angular-eslint/directive-selector
+	selector: '[ng-footer-tmp]',
+	standalone: true,
 })
 export class NgFooterTemplateDirective {
-	constructor(public template: TemplateRef<any>) {}
+	public readonly template = inject(TemplateRef<any>);
 }
 
 @Directive({
-    // eslint-disable-next-line @angular-eslint/directive-selector
-    selector: '[ng-notfound-tmp]',
-    standalone: true,
+	// eslint-disable-next-line @angular-eslint/directive-selector
+	selector: '[ng-notfound-tmp]',
+	standalone: true,
 })
 export class NgNotFoundTemplateDirective {
-	constructor(public template: TemplateRef<any>) {}
+	public readonly template = inject(TemplateRef<any>);
 }
 
 @Directive({
-    // eslint-disable-next-line @angular-eslint/directive-selector
-    selector: '[ng-placeholder-tmp]',
-    standalone: true,
+	// eslint-disable-next-line @angular-eslint/directive-selector
+	selector: '[ng-placeholder-tmp]',
+	standalone: true,
 })
 export class NgPlaceholderTemplateDirective {
-	constructor(public template: TemplateRef<any>) {}
+	public readonly template = inject(TemplateRef<any>);
 }
 
 @Directive({
-    // eslint-disable-next-line @angular-eslint/directive-selector
-    selector: '[ng-typetosearch-tmp]',
-    standalone: true,
+	// eslint-disable-next-line @angular-eslint/directive-selector
+	selector: '[ng-typetosearch-tmp]',
+	standalone: true,
 })
 export class NgTypeToSearchTemplateDirective {
-	constructor(public template: TemplateRef<any>) {}
+	public readonly template = inject(TemplateRef<any>);
 }
 
 @Directive({
-    // eslint-disable-next-line @angular-eslint/directive-selector
-    selector: '[ng-loadingtext-tmp]',
-    standalone: true,
+	// eslint-disable-next-line @angular-eslint/directive-selector
+	selector: '[ng-loadingtext-tmp]',
+	standalone: true,
 })
 export class NgLoadingTextTemplateDirective {
-	constructor(public template: TemplateRef<any>) {}
+	public readonly template = inject(TemplateRef<any>);
 }
 
 @Directive({
-    // eslint-disable-next-line @angular-eslint/directive-selector
-    selector: '[ng-tag-tmp]',
-    standalone: true,
+	// eslint-disable-next-line @angular-eslint/directive-selector
+	selector: '[ng-tag-tmp]',
+	standalone: true,
 })
 export class NgTagTemplateDirective {
-	constructor(public template: TemplateRef<any>) {}
+	public readonly template = inject(TemplateRef<any>);
 }
 
 @Directive({
-    // eslint-disable-next-line @angular-eslint/directive-selector
-    selector: '[ng-loadingspinner-tmp]',
-    standalone: true,
+	// eslint-disable-next-line @angular-eslint/directive-selector
+	selector: '[ng-loadingspinner-tmp]',
+	standalone: true,
 })
 export class NgLoadingSpinnerTemplateDirective {
-	constructor(public template: TemplateRef<any>) {}
+	public readonly template = inject(TemplateRef<any>);
+}
+
+// eslint-disable-next-line @angular-eslint/directive-selector
+@Directive({ selector: '[ng-clearbutton-tmp]', standalone: true })
+export class NgClearButtonTemplateDirective {
+	public readonly template = inject(TemplateRef<any>);
 }

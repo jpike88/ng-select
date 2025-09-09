@@ -1,32 +1,31 @@
-import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { ChangeDetectionStrategy, Component, HostBinding, inject, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { filter, map, mergeMap } from 'rxjs/operators';
 import { NgSelectConfig } from '@ng-select/ng-select';
+import { LayoutHeaderComponent } from './layout/header.component';
+import { LayoutSidenavComponent } from './layout/sidenav-component';
 
 @Component({
 	selector: 'demo-app',
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.scss'],
 	changeDetection: ChangeDetectionStrategy.Default,
+	imports: [LayoutHeaderComponent, LayoutSidenavComponent, RouterOutlet],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+	private router = inject(Router);
+	private activatedRoute = inject(ActivatedRoute);
+	private titleService = inject(Title);
+	private config = inject(NgSelectConfig);
+
 	title: string;
 	version: string = window['ngSelectVersion'];
 	exampleSourceUrl: string;
 	dir: 'ltr' | 'rtl' = 'ltr';
 	theme: 'default' | 'ant' | 'material' = 'default';
 
-	@HostBinding('class') get themeClass() {
-		return `${this.theme}-theme`;
-	}
-
-	constructor(
-		private router: Router,
-		private activatedRoute: ActivatedRoute,
-		private titleService: Title,
-		private config: NgSelectConfig,
-	) {
+	constructor() {
 		this.config.placeholder = 'Select item';
 		// This could be useful if you want to use appendTo in entire application without explicitly defining it. (eg: appendTo = 'body')
 		this.config.appendTo = null;
@@ -34,6 +33,10 @@ export class AppComponent {
 		// You can also override bindValue for the specified template by defining `bindValue` as property
 		// Eg : <ng-select bindValue="some-new-value"></ng-select>
 		// this.config.bindValue = 'value';
+	}
+
+	@HostBinding('class') get themeClass() {
+		return `${this.theme}-theme`;
 	}
 
 	ngOnInit() {

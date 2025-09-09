@@ -1,18 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DataService } from '../data.service';
+import { FormsModule } from '@angular/forms';
+import { AsyncPipe } from '@angular/common';
+import { NgSelectComponent } from '@ng-select/ng-select';
 
 @Component({
 	selector: 'ng-multi-select-disabled-example',
 	templateUrl: './multi-select-disabled-example.component.html',
 	styleUrls: ['./multi-select-disabled-example.component.scss'],
+	imports: [NgSelectComponent, FormsModule, AsyncPipe],
 })
 export class MultiSelectDisabledExampleComponent implements OnInit {
+	private dataService = inject(DataService);
+
 	people$: Observable<any[]>;
 	selectedPeople = [];
 	disable = true;
-
-	constructor(private dataService: DataService) {}
 
 	ngOnInit() {
 		this.people$ = this.dataService.getPeople();

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
+
 import { NgSelectModule } from '@ng-select/ng-select';
 import { AppendToExampleComponent } from './append-to-example/append-to-example.component';
 import { BindingsCustomExampleComponent } from './bindings-custom-example/bindings-custom-example.component';
@@ -47,11 +47,14 @@ import { TemplateSearchExampleComponent } from './template-search-example/templa
 import { VirtualScrollExampleComponent } from './virtual-scroll-example/virtual-scroll-example.component';
 import { SearchEditableExampleComponent } from './search-editable-example/search-editable-example.component';
 import { TemplatePlaceholderExampleComponent } from './template-placeholder-example/template-placeholder-example.component';
+import { FixedPlaceholderExampleComponent } from './fixed-placeholder-example/fixed-placeholder-example.component';
+import { TemplateClearExampleComponent } from './template-clear-example/template-clear-example.component';
 
 const examples = [
 	DataSourceBackendExampleComponent,
 	DataSourceArrayExampleComponent,
 	DataSourceOptionsExampleComponent,
+	FixedPlaceholderExampleComponent,
 	FormsWithOptionsExampleComponent,
 	FormsSingleSelectExampleComponent,
 	FormsMultiSelectExampleComponent,
@@ -69,6 +72,7 @@ const examples = [
 	TagsClosedDropdownExampleComponent,
 	TemplateLabelExampleComponent,
 	TemplatePlaceholderExampleComponent,
+	TemplateClearExampleComponent,
 	TemplateOptionExampleComponent,
 	TemplateOptgroupExampleComponent,
 	TemplateHeaderFooterExampleComponent,
@@ -96,8 +100,7 @@ const examples = [
 ];
 
 @NgModule({
-	declarations: examples,
-	imports: [NgSelectModule, NgOptionHighlightModule, FormsModule, CommonModule, ReactiveFormsModule],
-	exports: [NgSelectModule, NgOptionHighlightModule, FormsModule, CommonModule, ReactiveFormsModule],
+	imports: [NgSelectModule, FormsModule, CommonModule, ReactiveFormsModule, ...examples],
+	exports: [NgSelectModule, FormsModule, CommonModule, ReactiveFormsModule],
 })
 export class ExamplesModule {}

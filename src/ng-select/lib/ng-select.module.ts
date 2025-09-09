@@ -6,18 +6,19 @@ import {
 	NgFooterTemplateDirective,
 	NgHeaderTemplateDirective,
 	NgItemLabelDirective,
-    NgLabelTemplateDirective,
-    NgLoadingSpinnerTemplateDirective,
-    NgLoadingTextTemplateDirective,
-    NgMultiLabelTemplateDirective,
-    NgNotFoundTemplateDirective,
-    NgOptgroupTemplateDirective,
-    NgOptionTemplateDirective,
-    NgTagTemplateDirective,
-	NgTypeToSearchTemplateDirective,
+	NgLabelTemplateDirective,
+	NgLoadingSpinnerTemplateDirective,
+	NgLoadingTextTemplateDirective,
+	NgMultiLabelTemplateDirective,
+	NgNotFoundTemplateDirective,
+	NgOptgroupTemplateDirective,
+	NgOptionTemplateDirective,
 	NgPlaceholderTemplateDirective,
+	NgTagTemplateDirective,
+	NgTypeToSearchTemplateDirective,
+	NgClearButtonTemplateDirective
 } from './ng-templates.directive';
-import { DefaultSelectionModelFactory } from "./selection-model";
+import { DefaultSelectionModelFactory } from './selection-model';
 
 @NgModule({
 	imports: [
@@ -31,6 +32,7 @@ import { DefaultSelectionModelFactory } from "./selection-model";
 		NgHeaderTemplateDirective,
 		NgFooterTemplateDirective,
 		NgPlaceholderTemplateDirective,
+		NgClearButtonTemplateDirective,
 		NgNotFoundTemplateDirective,
 		NgTypeToSearchTemplateDirective,
 		NgLoadingTextTemplateDirective,
@@ -53,7 +55,17 @@ import { DefaultSelectionModelFactory } from "./selection-model";
 		NgLoadingTextTemplateDirective,
 		NgTagTemplateDirective,
 		NgLoadingSpinnerTemplateDirective,
+		NgClearButtonTemplateDirective
 	],
-	providers: [{ provide: SELECTION_MODEL_FACTORY, useValue: DefaultSelectionModelFactory }],
+	providers: provideNgSelect(),
 })
-export class NgSelectModule {}
+export class NgSelectModule { }
+
+export function provideNgSelect() {
+	return [
+		{
+			provide: SELECTION_MODEL_FACTORY,
+			useValue: DefaultSelectionModelFactory,
+		},
+	];
+}

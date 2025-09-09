@@ -1,23 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { NgSelectComponent } from '@ng-select/ng-select';
+import { Component, OnInit, inject } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgOptionTemplateDirective, NgSelectComponent, NgSelectComponent as NgSelectComponent_1 } from '@ng-select/ng-select';
 import { delay } from 'rxjs/operators';
 import { DataService } from '../data.service';
+import { NgOptionHighlightDirective } from '@ng-select/ng-option-highlight';
 
 @Component({
 	selector: 'ng-forms-async-data-example',
 	templateUrl: './forms-async-data-example.component.html',
 	styleUrls: ['./forms-async-data-example.component.scss'],
+	imports: [FormsModule, ReactiveFormsModule, NgSelectComponent_1, NgOptionTemplateDirective, NgOptionHighlightDirective],
 })
 export class FormsAsyncDataExampleComponent implements OnInit {
+	private fb = inject(FormBuilder);
+	private dataService = inject(DataService);
+
 	heroForm: FormGroup;
 	albums = [];
 	allAlbums = [];
-
-	constructor(
-		private fb: FormBuilder,
-		private dataService: DataService,
-	) {}
 
 	ngOnInit() {
 		this.loadAlbums();

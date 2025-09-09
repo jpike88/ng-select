@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { DataService, Person } from '../data.service';
+import { NgSelectComponent } from '@ng-select/ng-select';
 
 @Component({
 	selector: 'ng-search-default-example',
 	templateUrl: './search-default-example.component.html',
 	styleUrls: ['./search-default-example.component.scss'],
+	imports: [NgSelectComponent],
 })
 export class SearchDefaultExampleComponent implements OnInit {
+	private dataService = inject(DataService);
+
 	people: Person[] = [];
 	peopleLoading = false;
-
-	constructor(private dataService: DataService) {}
 
 	ngOnInit() {
 		this.loadPeople();
