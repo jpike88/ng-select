@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
-import { NgSelectComponent } from '@ng-select/ng-select';
+import { NgSelectComponent } from '@aquipa/ng-select';
 
 @Component({
 	selector: 'ng-tags-custom-example',

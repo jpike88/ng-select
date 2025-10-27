@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { DataService } from '../data.service';
 import { FormsModule } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
-import { NgSelectComponent } from '@ng-select/ng-select';
+import { NgSelectComponent } from '@aquipa/ng-select';
 
 interface Event {
 	name: string;

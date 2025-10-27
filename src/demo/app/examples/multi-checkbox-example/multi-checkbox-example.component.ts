@@ -3,7 +3,7 @@ import { DataService, Person } from '../data.service';
 import { map } from 'rxjs/operators';
 import { FormsModule } from '@angular/forms';
 import { JsonPipe, UpperCasePipe } from '@angular/common';
-import { NgOptgroupTemplateDirective, NgOptionTemplateDirective, NgSelectComponent } from '@ng-select/ng-select';
+import { NgOptgroupTemplateDirective, NgOptionTemplateDirective, NgSelectComponent } from '@aquipa/ng-select';
 
 @Component({
 	selector: 'ng-multi-checkbox-example',

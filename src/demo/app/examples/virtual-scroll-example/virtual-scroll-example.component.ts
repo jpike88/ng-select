@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { NgHeaderTemplateDirective, NgOptionTemplateDirective, NgSelectComponent } from '@ng-select/ng-select';
+import { NgHeaderTemplateDirective, NgOptionTemplateDirective, NgSelectComponent } from '@aquipa/ng-select';
 
 @Component({
 	selector: 'ng-virtual-scroll-example',

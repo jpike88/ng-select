@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgSelectComponent } from '@ng-select/ng-select';
+import { NgSelectComponent } from '@aquipa/ng-select';
 
 @Component({
 	selector: 'ng-tags-closed-dropdown-example',

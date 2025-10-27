@@ -5,20 +5,20 @@
 #### NPM
 
 ```shell
-npm install --save @ng-select/ng-option-highlight
+npm install --save @aquipa/ng-option-highlight
 ```
 
 #### YARN
 
 ```shell
-yarn add @ng-select/ng-option-highlight
+yarn add @aquipa/ng-option-highlight
 ```
 
 ### Step 2: Import the NgOptionHighlightModule:
 
 ```js
-import { NgSelectModule } from '@ng-select/ng-select';
-import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
+import { NgSelectModule } from '@aquipa/ng-select';
+import { NgOptionHighlightModule } from '@aquipa/ng-option-highlight';
 
 @NgModule({
 	declarations: [AppComponent],

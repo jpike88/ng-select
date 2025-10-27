@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgSelectComponent } from '@ng-select/ng-select';
+import { NgSelectComponent } from '@aquipa/ng-select';
 
 @Component({
 	selector: 'ng-forms-multi-select-example',

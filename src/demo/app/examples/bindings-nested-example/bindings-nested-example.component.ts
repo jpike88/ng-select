@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NgSelectComponent } from '@ng-select/ng-select';
+import { NgSelectComponent } from '@aquipa/ng-select';
 
 @Component({
 	selector: 'ng-bindings-nested-example',

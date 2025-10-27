@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NgSelectComponent, NgTagTemplateDirective } from '@ng-select/ng-select';
+import { NgSelectComponent, NgTagTemplateDirective } from '@aquipa/ng-select';
 
 @Component({
 	selector: 'ng-tags-backend-example',

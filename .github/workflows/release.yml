@@ -33,7 +33,7 @@ jobs:
       - name: Semantic release
         run: npx semantic-release
 
-      - name: copy @ng-select/ng-select version to @ng-select/ng-option-highlight
+      - name: copy @aquipa/ng-select version to @aquipa/ng-option-highlight
         run: |
           TEMPFILE=$(mktemp)
 
@@ -44,7 +44,7 @@ jobs:
         run: echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > ~/.npmrc
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: publish @ng-select/ng-option-highlight
+      - name: publish @aquipa/ng-option-highlight
         run: yarn publish ./dist/ng-option-highlight
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -20,10 +20,10 @@
       "esnext"
     ],
     "paths": {
-      "@ng-select/ng-select": [
+      "@aquipa/ng-select": [
         "src/ng-select/public-api.ts"
       ],
-      "@ng-select/ng-option-highlight": [
+      "@aquipa/ng-option-highlight": [
         "src/ng-option-highlight/public-api.ts"
       ]
     },

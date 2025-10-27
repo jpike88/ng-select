@@ -1,8 +1,8 @@
 {
-  "name": "@ng-select/ng-select",
+  "name": "@aquipa/ng-select",
   "version": "15.0.1",
   "description": "Angular ng-select - All in One UI Select, Multiselect and Autocomplete",
-  "author": "@ng-select/ng-select",
+  "author": "@aquipa/ng-select",
   "license": "MIT",
   "repository": "ng-select/ng-select",
   "engines": {

@@ -2,8 +2,8 @@ import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DataService } from '../data.service';
-import { NgLabelTemplateDirective, NgOptionTemplateDirective, NgSelectComponent } from '@ng-select/ng-select';
-import { NgOptionHighlightDirective } from '@ng-select/ng-option-highlight';
+import { NgLabelTemplateDirective, NgOptionTemplateDirective, NgSelectComponent } from '@aquipa/ng-select';
+import { NgOptionHighlightDirective } from '@aquipa/ng-option-highlight';
 
 @Component({
 	selector: 'ng-forms-custom-template-example',

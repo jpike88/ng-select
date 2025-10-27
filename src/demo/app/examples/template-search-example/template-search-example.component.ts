@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NgHeaderTemplateDirective, NgSelectComponent } from '@ng-select/ng-select';
+import { NgHeaderTemplateDirective, NgSelectComponent } from '@aquipa/ng-select';
 
 @Component({
 	selector: 'ng-template-search-example',

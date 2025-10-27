@@ -4,7 +4,7 @@ import { DataService, Person } from '../data.service';
 import { catchError, distinctUntilChanged, switchMap, tap } from 'rxjs/operators';
 import { FormsModule } from '@angular/forms';
 import { AsyncPipe, JsonPipe } from '@angular/common';
-import { NgSelectComponent } from '@ng-select/ng-select';
+import { NgSelectComponent } from '@aquipa/ng-select';
 
 @Component({
 	selector: 'ng-search-autocomplete-example',

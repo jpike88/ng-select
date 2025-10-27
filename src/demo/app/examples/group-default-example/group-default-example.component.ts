@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
-import { NgOptgroupTemplateDirective, NgSelectComponent } from '@ng-select/ng-select';
+import { NgOptgroupTemplateDirective, NgSelectComponent } from '@aquipa/ng-select';
 
 @Component({
 	selector: 'ng-group-default-example',

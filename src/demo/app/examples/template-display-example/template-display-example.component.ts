@@ -7,7 +7,7 @@ import {
 	NgNotFoundTemplateDirective,
 	NgSelectComponent,
 	NgTypeToSearchTemplateDirective,
-} from '@ng-select/ng-select';
+} from '@aquipa/ng-select';
 
 @Component({
 	selector: 'ng-template-display-example',

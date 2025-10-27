@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, HostBinding, inject, OnInit } from 
 import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { filter, map, mergeMap } from 'rxjs/operators';
-import { NgSelectConfig } from '@ng-select/ng-select';
+import { NgSelectConfig } from '@aquipa/ng-select';
 import { LayoutHeaderComponent } from './layout/header.component';
 import { LayoutSidenavComponent } from './layout/sidenav-component';
 

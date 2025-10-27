@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NgOptionComponent, NgSelectComponent } from '@ng-select/ng-select';
+import { NgOptionComponent, NgSelectComponent } from '@aquipa/ng-select';
 import { JsonPipe } from '@angular/common';
 
 @Component({

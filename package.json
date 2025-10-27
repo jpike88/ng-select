@@ -1,5 +1,5 @@
 {
-  "repository": "ng-select/ng-select",
+  "repository": "jpike88/ng-select",
   "scripts": {
     "ng": "ng",
     "build": "ng build ng-select && ng build ng-option-highlight && yarn build:themes && yarn copy-sass",

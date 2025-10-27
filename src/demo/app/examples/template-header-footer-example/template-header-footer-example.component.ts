@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { DataService } from '../data.service';
 import { FormsModule } from '@angular/forms';
-import { NgFooterTemplateDirective, NgHeaderTemplateDirective, NgSelectComponent } from '@ng-select/ng-select';
+import { NgFooterTemplateDirective, NgHeaderTemplateDirective, NgSelectComponent } from '@aquipa/ng-select';
 
 @Component({
 	selector: 'ng-template-header-footer-example',

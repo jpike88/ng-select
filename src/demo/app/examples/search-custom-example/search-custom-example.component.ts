@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { DataService, Person } from '../data.service';
-import { NgOptionTemplateDirective, NgSelectComponent } from '@ng-select/ng-select';
+import { NgOptionTemplateDirective, NgSelectComponent } from '@aquipa/ng-select';
 
 @Component({
 	selector: 'ng-search-custom-example',

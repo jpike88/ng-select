@@ -2,7 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { DataService } from '../data.service';
 import { FormsModule } from '@angular/forms';
 import { AsyncPipe } from '@angular/common';
-import { NgSelectComponent } from '@ng-select/ng-select';
+import { NgSelectComponent } from '@aquipa/ng-select';
 
 @Component({
 	selector: 'ng-append-to-example',

@@ -2,7 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { DataService, Person } from '../data.service';
 import { map } from 'rxjs/operators';
 import { FormsModule } from '@angular/forms';
-import { NgOptgroupTemplateDirective, NgOptionTemplateDirective, NgSelectComponent } from '@ng-select/ng-select';
+import { NgOptgroupTemplateDirective, NgOptionTemplateDirective, NgSelectComponent } from '@aquipa/ng-select';
 import { UpperCasePipe } from '@angular/common';
 
 @Component({

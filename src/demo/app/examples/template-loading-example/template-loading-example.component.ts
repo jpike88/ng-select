@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgLoadingSpinnerTemplateDirective, NgSelectComponent } from '@ng-select/ng-select';
+import { NgLoadingSpinnerTemplateDirective, NgSelectComponent } from '@aquipa/ng-select';
 
 @Component({
 	selector: 'ng-template-loading-example',

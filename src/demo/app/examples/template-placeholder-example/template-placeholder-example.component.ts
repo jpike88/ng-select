@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NgLabelTemplateDirective, NgPlaceholderTemplateDirective, NgSelectComponent } from '@ng-select/ng-select';
+import { NgLabelTemplateDirective, NgPlaceholderTemplateDirective, NgSelectComponent } from '@aquipa/ng-select';
 
 @Component({
 	selector: 'ng-template-placeholder-example',

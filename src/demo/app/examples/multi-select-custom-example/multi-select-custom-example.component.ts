@@ -2,7 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DataService } from '../data.service';
 import { FormsModule } from '@angular/forms';
-import { NgMultiLabelTemplateDirective, NgSelectComponent } from '@ng-select/ng-select';
+import { NgMultiLabelTemplateDirective, NgSelectComponent } from '@aquipa/ng-select';
 import { AsyncPipe, SlicePipe } from '@angular/common';
 
 @Component({
